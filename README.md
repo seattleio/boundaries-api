@@ -9,7 +9,7 @@ Send a request like this:
 http://boundaries.seattle.io/boundaries?long=-122.345002&lat=47.667044
 ```
 
-Get a `FeatureCollection` of matching the matching feature from each dataset in response.
+Get a `FeatureCollection` of the matching features from each dataset in response.
 
 ## See also
 - [seattle-boundaries](https://github.com/openseattle/seattle-boundaries) – the collection of geojson boundaries this server uses
