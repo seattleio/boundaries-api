@@ -1,0 +1,23 @@
+{
+  "name": "boundaries.seattle.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seattleio/boundaries.seattle.io.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seattleio/boundaries.seattle.io/issues"
+  },
+  "homepage": "https://github.com/seattleio/boundaries.seattle.io#readme",
+  "dependencies": {
+    "marked": "^0.3.5",
+    "router": "^1.1.3",
+    "seattle-boundaries": "^3.0.0",
+    "send-data": "^8.0.0"
+  }
+}
