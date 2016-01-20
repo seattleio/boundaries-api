@@ -8,6 +8,9 @@ var sendHTML = require('send-data/html')
 var sendError = require('send-data/error')
 var marked = require('marked')
 var config = require('./config')
+var morgan = require('morgan')
+
+router.use(morgan('common'))
 
 router.get('/', function (req, res) {
   fs.readFile('index.md', 'utf8', function (err, file) {
