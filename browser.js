@@ -4,8 +4,15 @@ var css = require('sheetify')
 var send = require('send-action')({
   onaction: onaction,
   onchange: onchange,
-  state: {}
+  state: {
+    title: 'Seattle Boundaries'
+  }
 })
+
+/*
+* Require the main elements the app
+*/
+var header = require('./elements/header')
 
 /*
 * action handler that modifies state based on the actions triggered
@@ -34,5 +41,7 @@ document.body.appendChild(render(send.state()))
 * Render the app
 */
 function app (state) {
-  return el`<div id="app">${state.value}</div>`
+  return el`<div id="app">
+    ${header(state, send)}
+  </div>`
 }
