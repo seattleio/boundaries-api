@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bundle": "browserify browser.js > bundle.js",
-    "start": "node server.js"
+    "bundle": "browserify browser.js -t sheetify/transform > bundle.js",
+    "start:browser": "budo browser.js:bundle.js --live -- -t sheetify/transform",
+    "start:server": "node server.js",
+    "start": "npm run start:server & npm run start:browser"
   },
   "repository": {
     "type": "git",
@@ -18,10 +20,11 @@
   },
   "homepage": "https://github.com/seattleio/boundaries.seattle.io#readme",
   "dependencies": {
+    "insert-css": "^0.2.0",
     "marked": "^0.3.5",
     "morgan": "^1.6.1",
     "router": "^1.1.3",
-    "seattle-boundaries": "^4.1.0",
+    "seattle-boundaries": "^4.1.2",
     "send-action": "^1.0.3",
     "send-data": "^8.0.0",
     "sheetify": "^5.0.0",
