@@ -1,9 +1,8 @@
-var el = require('yo-yo')
-var css = require('sheetify')
-
-module.exports = function header (state, send) {  
-  var prefix = css`
-    :host {
+body {
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  margin: 0px;
+}
+._b3d8300e {
       width: 100%;
       background-color: #f2f2f0;
       padding: 10px 0px;
@@ -13,15 +12,9 @@ module.exports = function header (state, send) {
       border-bottom: 1px solid #e2e2e0;
     }
 
-    h1 {
+    ._b3d8300e h1 {
       font-size: 20px;
       line-height: 1;
       margin: 5px 0px 0px 0px;
       display: inline-block;
     }
-  `
-
-  return el`<header class="${prefix}">
-    <h1><a href="/">${state.title}</a></h1>
-  </header>`
-}
