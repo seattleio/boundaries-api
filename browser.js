@@ -11,7 +11,8 @@ var send = require('send-action')({
   onchange: onchange,
   state: {
     title: 'Seattle Boundaries',
-    location: document.location.pathname
+    location: document.location.pathname,
+    keywords: 'Search...'
   }
 })
 
@@ -28,6 +29,7 @@ history(sendLocation)
 * Require the main elements of the app
 */
 var header = require('./elements/header')
+var search = require('./elements/search')
 
 /*
 * action handler that modifies state based on the actions triggered
@@ -66,5 +68,6 @@ document.body.appendChild(render(send.state()))
 function app (state) {
   return el`<div id="app">
     ${header(state, send)}
+    ${search(state, send)}
   </div>`
 }
