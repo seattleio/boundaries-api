@@ -30,6 +30,7 @@ history(sendLocation)
 */
 var header = require('./elements/header')
 var search = require('./elements/search')
+var stackedBoundaries = require('./elements/stackedBoundaries')
 
 /*
 * action handler that modifies state based on the actions triggered
@@ -69,5 +70,6 @@ function app (state) {
   return el`<div id="app">
     ${header(state, send)}
     ${search(state, send)}
+    ${stackedBoundaries(state, send)}
   </div>`
 }
