@@ -8,12 +8,11 @@ module.exports = function (config) {
   var app = {}
 
   /*
-   * GET all players
+   * GET and empty list of boundaries
    */
   app.getBoundaries = function (options, callback) {
     request({
       url: host,
-      // port: 
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     }, function (err, res, body) {
@@ -24,8 +23,9 @@ module.exports = function (config) {
   },
 
   /*
-   * GET a specific player
+   * GET the default boundary dataset at a specific lat/long
    */
+  // TODO: Pass in query params instead of hardcoding them
   app.getQueriedBoundaries = function (options, callback) {
     request({
       url: host + '?long=-122.345002&lat=47.667044',

@@ -3,9 +3,10 @@ var config = require('../config')
 var client = require('../client')(config)
 
 /*
- * GET Players
+ * Testing the API client here:
  */
-// Assume that we already have a superuser names USERNAME with password 'sodasoda'
+// TODO: Assert these tests against a specific response result
+// (we are currently only checking for errors)
 test('get boundaries', function (t) {
   client.getBoundaries({}, function (err, res) {
     t.notOk(err)
