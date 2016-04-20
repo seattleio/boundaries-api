@@ -11,7 +11,7 @@ var send = require('send-action')({
   onchange: onchange,
   state: {
     title: 'Seattle Boundaries',
-    location: document.location.pathname,
+    pathname: document.location.pathname,
     keywords: 'Search...',
     download: false
   }
@@ -19,12 +19,12 @@ var send = require('send-action')({
 
 css('./style.css', { global: true })
 
-function sendLocation (href) {
-  send('location', { location: url.parse(href).pathname })
+function sendPathname (href) {
+  send('pathname', { pathname: url.parse(href).pathname })
 }
 
-href(sendLocation)
-history(sendLocation)
+href(sendPathname)
+history(sendPathname)
 
 /*
 * Require the main elements of the app
@@ -41,8 +41,8 @@ function onaction (action, state) {
   var type = action.type
   console.log(type, state)
 
-  if (type === 'location') {
-    return xtend(state, { location: action.location })
+  if (type === 'pathname') {
+    return xtend(state, { pathname: action.pathname })
   }
   
   if (type === 'download') {
