@@ -17,11 +17,16 @@ app.on('/', function (req, res, ctx) {
 app.on('/boundaries', function (req, res, ctx) {
   var query = ctx.query
   var format = query.format || 'geojson'
-  var long = query.long || query.lng || query.lon
-  var lat = query.lat
-  var matches = boundaries(long, lat)
+
+  var matches = boundaries({
+    long: query.long || query.lng || query.lon,
+    lat: query.lat,
+    dataset: query.dataset
+  })
+
   if (format === 'topojson') {
     matches = topojson.topology({ collection: matches })
   }
+
   app.send(res, matches)
 })

@@ -23,7 +23,7 @@
     "appa": "^2.1.0",
     "corsify": "^2.1.0",
     "insert-css": "^0.2.0",
-    "seattle-boundaries": "^4.1.2",
+    "seattle-boundaries": "^5.0.0",
     "send-action": "^1.0.3",
     "sheet-router": "^2.0.3",
     "sheetify": "^5.0.0",
