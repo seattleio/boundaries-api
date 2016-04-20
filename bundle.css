@@ -24,7 +24,7 @@ body {
       text-shadow: none;
       position: relative;
       top: 70px;
-    }._023a3e58 {
+    }._fa54f1e5 {
       width:50%;
       background-color: #ffffff;
       position: fixed;
@@ -33,18 +33,20 @@ body {
       text-align: center;
   }
 
-  ._023a3e58 h1 {
+  ._fa54f1e5 h1 {
     font-size: 12px;
   }
 
-  ._023a3e58 img {
+  ._fa54f1e5 img {
     width: 15%;
     margin:0;
     padding:0;
   }
 
-  ._023a3e58 hr {
+  ._fa54f1e5 hr {
     margin:0;
     border:0;
     height: 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
