@@ -24,7 +24,7 @@ body {
       text-shadow: none;
       position: relative;
       top: 70px;
-    }._fa54f1e5 {
+    }._84c779de {
       width:50%;
       background-color: #ffffff;
       position: fixed;
@@ -33,17 +33,17 @@ body {
       text-align: center;
   }
 
-  ._fa54f1e5 h1 {
+  ._84c779de h1 {
     font-size: 12px;
   }
 
-  ._fa54f1e5 img {
+  ._84c779de img {
     width: 15%;
-    margin:0;
+    margin:-18px 0;
     padding:0;
   }
 
-  ._fa54f1e5 hr {
+  ._84c779de hr {
     margin:0;
     border:0;
     height: 15px;
