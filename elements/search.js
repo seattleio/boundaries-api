@@ -8,8 +8,6 @@ module.exports = function search (state, send) {
       cursor: auto;
       width: 30%;
       text-shadow: none;
-      position: relative;
-      top: 70px;
     }
   `
 

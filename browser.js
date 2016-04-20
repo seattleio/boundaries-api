@@ -12,7 +12,8 @@ var send = require('send-action')({
   state: {
     title: 'Seattle Boundaries',
     location: document.location.pathname,
-    keywords: 'Search...'
+    keywords: 'Search...',
+    download: false
   }
 })
 
@@ -31,15 +32,21 @@ history(sendLocation)
 var header = require('./elements/header')
 var search = require('./elements/search')
 var stackedBoundaries = require('./elements/stackedBoundaries')
+var download = require('./elements/download')
 
 /*
 * action handler that modifies state based on the actions triggered
 */
 function onaction (action, state) {
   var type = action.type
+  console.log(type, state)
 
   if (type === 'location') {
     return xtend(state, { location: action.location })
+  }
+  
+  if (type === 'download') {
+    return xtend(state, { download: action.download })
   }
 
   return state
@@ -71,5 +78,6 @@ function app (state) {
     ${header(state, send)}
     ${search(state, send)}
     ${stackedBoundaries(state, send)}
+    ${download(state, send)}
   </div>`
 }

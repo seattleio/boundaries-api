@@ -16,7 +16,6 @@ module.exports = function stackedBoundaries (state, send) {
     :host {
       width:50%;
       background-color: #ffffff;
-      position: fixed;
       top: 150px;
       margin: 0 auto;
       text-align: center;

@@ -8,7 +8,6 @@ module.exports = function header (state, send) {
       background-color: #f2f2f0;
       padding: 10px 0px;
       height: 50px;
-      position: fixed;
       top: 0;
       border-bottom: 1px solid #e2e2e0;
     }
