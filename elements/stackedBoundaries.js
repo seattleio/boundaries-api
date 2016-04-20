@@ -2,6 +2,16 @@ var el = require('yo-yo')
 var css = require('sheetify')
 
 module.exports = function stackedBoundaries (state, send) {  
+  var data = [
+    { area: 15, color: "black"},
+    { area: 25, color: "green"},
+    { area: 30, color: "red"},
+    { area: 50, color: "blue"},
+    { area: 60, color: "purple"},
+    { area: 80, color: "yellow"},
+    { area: 100, color: "brown"},
+  ];
+
   var prefix = css`
     :host {
       width:50%;
@@ -18,7 +28,7 @@ module.exports = function stackedBoundaries (state, send) {
 
   img {
     width: 15%;
-    margin:0;
+    margin:-18px 0;
     padding:0;
   }
 
@@ -26,19 +36,21 @@ module.exports = function stackedBoundaries (state, send) {
     margin:0;
     border:0;
     height: 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
   `
-  return el`<div class="${prefix}">
-    <img src='icon-person-128.png' />
-    <div style='margin-top:-10px;'>
-    <div width='15px'><hr style='margin-right:42.5%; margin-left:42.5%; background:black;'></div>
-    <div width='25px'><hr style='margin-right:40%; margin-left:40%; background:green;'></div>
-    <div width='30px'><hr style='margin-right:35%; margin-left:35%; background:red;'></div>
-    <div width='50px'><hr style='margin-right:25%; margin-left:25%; background:blue;'></div>
-    <div width='60px'><hr style='margin-right:20%; margin-left:20%; background:purple;'></div>
-    <div width='80px'><hr style='margin-right:10%; margin-left:10%; background:yellow;'></div>
-    <div width='100px'><hr style='margin-right:0%; margin-left:0%; background:brown;'></div>
-    </div>
-    </div>
-  </div>`
+
+  function buildElem(items) {
+    return el`<div class="${prefix}">
+              <img src="icon-person-128.png" />
+              ${items.map(function(item){
+                var area = item.area;
+                var margin = (100 - item.area)/2;
+                return el`<div width='${area}'><hr style='margin:0 ${margin}%; background: ${item.color}' /></div>`
+              })}
+              </div>`
+  }
+
+  return buildElem(data);
 }
