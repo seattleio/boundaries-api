@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "tape tests/*.js | tap-spec",
     "bundle": "browserify browser.js -t sheetify/transform -p [ css-extract -o bundle.css ] > bundle.js",
     "start:browser": "budo browser.js:bundle.js -l -P -- -t sheetify/transform -p [ css-extract -o bundle.css ]",
     "start:server": "node server.js",
@@ -21,8 +22,10 @@
   "homepage": "https://github.com/seattleio/boundaries.seattle.io#readme",
   "dependencies": {
     "appa": "^2.1.0",
+    "base-64": "^0.1.0",
     "corsify": "^2.1.0",
     "insert-css": "^0.2.0",
+    "request": "^2.72.0",
     "seattle-boundaries": "^5.0.0",
     "send-action": "^1.0.3",
     "sheet-router": "^2.0.3",
@@ -34,6 +37,8 @@
   "devDependencies": {
     "browserify": "^13.0.0",
     "budo": "^8.2.1",
-    "css-extract": "^1.1.0"
+    "css-extract": "^1.1.0",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.2"
   }
 }
