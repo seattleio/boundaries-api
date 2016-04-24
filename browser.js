@@ -5,6 +5,7 @@ var history = require('sheet-router/history')
 var sheetRouter = require('sheet-router')
 var href = require('sheet-router/href')
 var xtend = require('xtend')
+var mapbox = require('mapbox')
 
 var send = require('send-action')({
   onaction: onaction,
@@ -12,8 +13,10 @@ var send = require('send-action')({
   state: {
     title: 'Seattle Boundaries',
     pathname: document.location.pathname,
-    keywords: 'Search...',
-    download: false
+    address: 'Search...',
+    download: false,
+    lat: 0,
+    long: 0
   }
 })
 
@@ -47,6 +50,10 @@ function onaction (action, state) {
   
   if (type === 'download') {
     return xtend(state, { download: action.download })
+  }
+
+  if (type === 'search') {
+    return xtend(state, { address: action.address, lat: action.lat, lng: action.lng })
   }
 
   return state
