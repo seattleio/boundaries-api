@@ -53,7 +53,7 @@ function onaction (action, state) {
   }
 
   if (type === 'search') {
-    return xtend(state, { address: action.address, lat: action.lat, lng: action.lng })
+    return xtend(state, { address: action.address, lat: action.lat, long: action.long })
   }
 
   return state
