@@ -3,8 +3,9 @@ var css = require('sheetify')
 var header = require('../elements/header')
 var search = require('../elements/search')
 var stackedBoundaries = require('../elements/stackedBoundaries')
+var map = require('./map')
 
-module.exports = function stackedMapApp (state, send) {  
+module.exports = function stackedMapApp (state, send) {
   var stackedMap = css`
     :host {
       background-color: #ffffff;
@@ -44,7 +45,7 @@ module.exports = function stackedMapApp (state, send) {
     <div class="stackedMapSearch">${search(state, send)}</div>
     <div class="stackMapContainer">
       <div class="stackedMapStacks"><h3>Stack</h3>${stackedBoundaries(state, send)}</div>
-      <div class="stackedMapMap"><h3>Map Container</h3></div>
+      <div class="stackedMapMap">${map(state, send)}</div>
     </div>
   </div>`
 }

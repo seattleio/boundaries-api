@@ -48,7 +48,7 @@ function onaction (action, state) {
   if (type === 'pathname') {
     return xtend(state, { pathname: action.pathname })
   }
-  
+
   if (type === 'download') {
     return xtend(state, { download: action.download })
   }
@@ -73,6 +73,7 @@ function onchange (action, state, oldState) {
 * Render the html of the app with yo-yo
 */
 function render (state) {
+  console.log('render')
   return app(state)
 }
 
