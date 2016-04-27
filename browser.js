@@ -36,6 +36,7 @@ var header = require('./elements/header')
 var search = require('./elements/search')
 var stackedBoundaries = require('./elements/stackedBoundaries')
 var download = require('./elements/download')
+var stackedMapApp = require('./elements/stackedMapApp')
 
 /*
 * action handler that modifies state based on the actions triggered
@@ -82,9 +83,6 @@ document.body.appendChild(render(send.state()))
 */
 function app (state) {
   return el`<div id="app">
-    ${header(state, send)}
-    ${search(state, send)}
-    ${stackedBoundaries(state, send)}
-    ${download(state, send)}
+    ${stackedMapApp(state, send)}
   </div>`
 }
