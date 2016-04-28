@@ -16,6 +16,7 @@ module.exports = function createMap (state, send) {
     L.mapbox.accessToken = 'pk.eyJ1Ijoic2V0aHZpbmNlbnQiLCJhIjoiSXZZXzZnUSJ9.Nr_zKa-4Ztcmc1Ypl0k5nw'
     mapEl = el`<div id="map" class="${prefix}"></div>`
     map = L.mapbox.map(mapEl, 'mapbox.streets')
+    L.marker([state.lat, state.long]).addTo(map);
 
     window.addEventListener('load', function () {
       map.setView([state.lat, state.long], 11, { reset: true })
@@ -26,9 +27,10 @@ module.exports = function createMap (state, send) {
   if (state.map === undefined) {
     init();
   } else {
+
     mapEl = document.getElementById('map');
     console.log("update map")
-    state.map.setView([state.lat, state.long], 11, { reset: true })
+    state.map.setView([state.lat, state.long], 14)
   }
 
   return mapEl

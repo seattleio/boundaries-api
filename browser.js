@@ -6,6 +6,7 @@ var sheetRouter = require('sheet-router')
 var href = require('sheet-router/href')
 var xtend = require('xtend')
 var mapbox = require('mapbox')
+var L = require('mapbox.js')
 
 var send = require('send-action')({
   onaction: onaction,
