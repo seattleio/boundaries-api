@@ -18,6 +18,8 @@ module.exports = function createMap (state, send) {
   window.addEventListener('load', function () {
     map.setView([47.606, -122.332], 11, { reset: true })
   })
+  console.log('panning: ' + state.lat + ',' + state.long);
+  map.setView(new L.LatLng(state.lat, state.long), 11);
 
   return mapEl
 }

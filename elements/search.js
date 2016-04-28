@@ -12,26 +12,27 @@ module.exports = function search (state, send) {
     }
   `
 
-  var latitude = 0;
-  var longitude = 0;
+  var addrpattern = '';
   function refreshaddress (e) {
 //TODO last n results matching as user input
   }
 
   function callback(err, data) {
     if (data.latlng) {
-      latitude = data.latlng[0];
-      longitude = data.latlng[1];
+      var latitude = data.latlng[0];
+      var longitude = data.latlng[1];
+      console.log('resp-lat: ' + latitude);
+      console.log('resp-lng: ' + longitude);
+      send('search', { address: addrpattern, lat: latitude, long: longitude });
     }
   }
 
   function onsearch (e) {
     if (e.target.value != '') {
-      L.mapbox.accessToken = 'pk.eyJ1IjoicGF0dGVybnMiLCJhIjoiY2luOXhpM3l6MGZsNXYwa3ZiajJnMGs5aiJ9.BAZWHE9i1McCjuCSnuVUmw';
-  ////    L.mapbox.accessToken = 'Your-Mapbox-Access-Token';
+      addrpattern = e.target.value;
+      L.mapbox.accessToken = 'pk.eyJ1Ijoic2V0aHZpbmNlbnQiLCJhIjoiSXZZXzZnUSJ9.Nr_zKa-4Ztcmc1Ypl0k5nw';
       var geocoder = L.mapbox.geocoder('mapbox.places');
       geocoder.query(e.target.value, callback);
-      send('search', { address: e.target.value, lat: latitude, long: longitude });
     }
   }
 
