@@ -2,16 +2,6 @@ var el = require('yo-yo')
 var css = require('sheetify')
 
 module.exports = function stackedBoundaries (state, send) {  
-  var data = [
-    { area: 15, color: "black"},
-    { area: 25, color: "green"},
-    { area: 30, color: "red"},
-    { area: 50, color: "blue"},
-    { area: 60, color: "purple"},
-    { area: 80, color: "yellow"},
-    { area: 100, color: "brown"},
-  ];
-
   var prefix = css`
     :host {
       background-color: #ffffff;
@@ -55,5 +45,5 @@ module.exports = function stackedBoundaries (state, send) {
               </div>`
   }
 
-  return buildElem(data);
+  return buildElem(state.boundaries);
 }

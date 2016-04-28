@@ -9,6 +9,37 @@ var mapbox = require('mapbox')
 var L = require('mapbox.js')
 L.mapbox.accessToken = 'pk.eyJ1Ijoic2V0aHZpbmNlbnQiLCJhIjoiSXZZXzZnUSJ9.Nr_zKa-4Ztcmc1Ypl0k5nw'
 
+// for testing purpose
+var boundaries = [
+    {"name":"US Census Tracts", "color": "black", "area": 0, "polygon": []},
+    {"name":"City Council Districs", "color": "green", "area": 0, "polygon": []},
+    {"name":"Neighborhoods", "color": "red", "area": 0, "polygon": []},
+    {"name":"Congressional Districts", "color": "blue", "area": 0, "polygon": []},
+    {"name":"Parks", "color": "purple", "area": 0, "polygon": []},
+    {"name":"Police Department Beats", "color": "yellow", "area": 0, "polygon": []},
+    {"name":"Police Department Precints", "color": "brown", "area": 0, "polygon": []},
+    {"name":"Police Department Policing Plans", "color": "orange", "area": 0, "polygon": []},
+    {"name":"Residential Urban Villages", "color": "black", "area": 0, "polygon": []},
+    {"name":"Public Schools", "color": "black", "area": 0, "polygon": []},
+    {"name":"Zipcodes", "color": "black", "area": 0, "polygon": []},
+    {"name":"Zoning", "color": "black", "area": 0, "polygon": []}
+  ];
+
+// random assign boundary area between 0 - 100
+boundaries.forEach(function(element, index){
+    element.area = Math.random() * 100;
+});
+// sort by area
+boundaries.sort(function(a, b) {
+  if (a.area > b.area) {
+    return 1;
+  }
+  if (a.area < b.area) {
+    return -1;
+  }
+  return 0;
+});
+// end for testing purpose
 
 var send = require('send-action')({
   onaction: onaction,
@@ -21,7 +52,7 @@ var send = require('send-action')({
     lat: 47.606,
     long: -122.332,
     selectedBoundary: {},
-    boundaries: []
+    boundaries: boundaries,
     map: undefined,
     mapLayer: L
   }

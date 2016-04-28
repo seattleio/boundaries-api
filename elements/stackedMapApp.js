@@ -40,12 +40,17 @@ module.exports = function stackedMapApp (state, send) {
     min-height: 300px;
   }
   `
-  return el`<div id="stackedMap" class="${stackedMap}">
-    <div class="stackedMapHeader">${header(state, send)}</div>
-    <div class="stackedMapSearch">${search(state, send)}</div>
-    <div class="stackMapContainer">
-      <div class="stackedMapStacks"><h3>Stack</h3>${stackedBoundaries(state, send)}</div>
-      <div class="stackedMapMap">${map(state, send)}</div>
-    </div>
-  </div>`
+  function buildApp() {
+    return el`<div id="stackedMap" class="${stackedMap}">
+      <div class="stackedMapHeader">${header(state, send)}</div>
+      <div class="stackedMapSearch">${search(state, send)}</div>
+      <div class="stackMapContainer">
+        <div class="stackedMapStacks"><h3>Stack</h3>${stackedBoundaries(state, send)}</div>
+        <div class="stackedMapMap">${map(state, send)}</div>
+      </div>
+    </div>`
+  }
+
+  
+  return buildApp();
 }
