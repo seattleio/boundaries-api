@@ -15,8 +15,8 @@ var send = require('send-action')({
     pathname: document.location.pathname,
     address: 'Search...',
     download: false,
-    lat: 0,
-    long: 0,
+    lat: 47.606,
+    long: -122.332,
     selectedBoundary: {},
     boundaries: []
   }

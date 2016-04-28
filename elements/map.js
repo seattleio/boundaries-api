@@ -16,7 +16,7 @@ module.exports = function createMap (state, send) {
   var map = L.mapbox.map(mapEl, 'mapbox.streets')
 
   window.addEventListener('load', function () {
-    map.setView([47.606, -122.332], 11, { reset: true })
+    map.setView([state.lat, state.long], 11, { reset: true })
   })
 
   return mapEl
