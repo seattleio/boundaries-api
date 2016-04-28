@@ -18,7 +18,8 @@ var send = require('send-action')({
     lat: 47.606,
     long: -122.332,
     selectedBoundary: {},
-    boundaries: []
+    boundaries: [],
+    map: undefined
   }
 })
 
