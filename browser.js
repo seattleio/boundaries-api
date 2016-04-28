@@ -16,7 +16,9 @@ var send = require('send-action')({
     address: 'Search...',
     download: false,
     lat: 0,
-    long: 0
+    long: 0,
+    selectedBoundary: {},
+    boundaries: []
   }
 })
 
@@ -55,6 +57,11 @@ function onaction (action, state) {
 
   if (type === 'search') {
     return xtend(state, { address: action.address, lat: action.lat, long: action.long })
+  }
+
+  if (type='stacked') {
+    console.log(action.selectedBoundary);
+    return xtend(state, {selectedBoundary: action.selectedBoundary})
   }
 
   return state

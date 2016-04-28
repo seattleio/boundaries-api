@@ -38,13 +38,19 @@ module.exports = function stackedBoundaries (state, send) {
   }
   `
 
+  function onclick(e){
+    // console.log('stacked');
+    var selectedBoundary = {name: 'nameid', show: false};
+    send('stacked', {selectedBoundary: selectedBoundary});
+  }
+
   function buildElem(items) {
     return el`<div class="${prefix}">
               <img src="icon-person-128-cropped.png" />
               ${items.map(function(item){
                 var area = item.area;
                 var margin = (100 - item.area)/2;
-                return el`<div width='${area}'><hr style='margin:0 ${margin}%; background: ${item.color}' /></div>`
+                return el`<div width='${area}' onclick=${onclick}><hr style='margin:0 ${margin}%; background: ${item.color}' /></div>`
               })}
               </div>`
   }
