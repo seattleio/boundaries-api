@@ -1,6 +1,5 @@
 var el = require('yo-yo')
 var css = require('sheetify')
-var L = require('mapbox.js')
 
 module.exports = function createMap (state, send) {
   var prefix = css`
@@ -12,11 +11,9 @@ module.exports = function createMap (state, send) {
   var mapEl;
   var map;
   function init() {
-    // TODO: make accessToken configurable
-    L.mapbox.accessToken = 'pk.eyJ1Ijoic2V0aHZpbmNlbnQiLCJhIjoiSXZZXzZnUSJ9.Nr_zKa-4Ztcmc1Ypl0k5nw'
     mapEl = el`<div id="map" class="${prefix}"></div>`
-    map = L.mapbox.map(mapEl, 'mapbox.streets')
-    L.marker([state.lat, state.long]).addTo(map);
+    map = state.mapLayer.mapbox.map(mapEl, 'mapbox.streets')
+    state.mapLayer.marker([state.lat, state.long]).addTo(map);
 
     window.addEventListener('load', function () {
       map.setView([state.lat, state.long], 11, { reset: true })

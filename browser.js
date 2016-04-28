@@ -7,6 +7,8 @@ var href = require('sheet-router/href')
 var xtend = require('xtend')
 var mapbox = require('mapbox')
 var L = require('mapbox.js')
+L.mapbox.accessToken = 'pk.eyJ1Ijoic2V0aHZpbmNlbnQiLCJhIjoiSXZZXzZnUSJ9.Nr_zKa-4Ztcmc1Ypl0k5nw'
+
 
 var send = require('send-action')({
   onaction: onaction,
@@ -19,8 +21,9 @@ var send = require('send-action')({
     lat: 47.606,
     long: -122.332,
     selectedBoundary: {},
-    boundaries: [],
-    map: undefined
+    boundaries: []
+    map: undefined,
+    mapLayer: L
   }
 })
 
