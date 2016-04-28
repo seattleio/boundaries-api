@@ -16,33 +16,65 @@ body {
       line-height: 1;
       margin: 5px 0px 0px 0px;
       display: inline-block;
-    }._13a13dca input[type=search] {
+    }._da6967b2 {
+      width: 100%;
+      min-height: 300px;
+    }._db1a5204 input[type=search] {
       text-align: center;
+      width: 100%;
       cursor: auto;
-      width: 30%;
       text-shadow: none;
-    }._af9d2845 {
-      width:50%;
+    }._75a754f0 {
       background-color: #ffffff;
-      top: 150px;
       margin: 0 auto;
       text-align: center;
   }
 
-  ._af9d2845 h1 {
+  ._75a754f0 h1 {
     font-size: 12px;
   }
 
-  ._af9d2845 img {
-    width: 15%;
-    margin:-18px 0;
+  ._75a754f0 img {
+    width: 10%;
+    margin:-5px 0;
     padding:0;
   }
 
-  ._af9d2845 hr {
+  ._75a754f0 hr {
     margin:0;
     border:0;
     height: 15px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+  }._5be7b1df {
+      background-color: #ffffff;
+      margin: 0 auto;
+      text-align: center;
+  }
+  ._5be7b1df div.stackedMapHeader {
+    width: 100%;
+  }
+  ._5be7b1df div.stackedMapSearch {
+    width: 80%;
+    margin: 10px auto;
+  }
+  ._5be7b1df div.stackMapContainer {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    min-height: 300px;
+    // border: 1px solid gray;
+  }
+  ._5be7b1df div.stackedMapStacks {
+    position: absolute;
+    bottom: 0;
+    width: 49%;
+    float: left;
+    border:1px solid gray;
+  }
+  ._5be7b1df div.stackedMapMap {
+    width: 49%;
+    float: right;
+    border: 1px solid gray;
+    min-height: 300px;
   }

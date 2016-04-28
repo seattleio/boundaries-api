@@ -6,8 +6,8 @@ module.exports = function search (state, send) {
   var navbar = css`
     input[type=search] {
       text-align: center;
+      width: 100%;
       cursor: auto;
-      width: 30%;
       text-shadow: none;
     }
   `

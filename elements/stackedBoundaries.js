@@ -14,9 +14,7 @@ module.exports = function stackedBoundaries (state, send) {
 
   var prefix = css`
     :host {
-      width:50%;
       background-color: #ffffff;
-      top: 150px;
       margin: 0 auto;
       text-align: center;
   }
@@ -26,8 +24,8 @@ module.exports = function stackedBoundaries (state, send) {
   }
 
   img {
-    width: 15%;
-    margin:-18px 0;
+    width: 10%;
+    margin:-5px 0;
     padding:0;
   }
 
@@ -42,7 +40,7 @@ module.exports = function stackedBoundaries (state, send) {
 
   function buildElem(items) {
     return el`<div class="${prefix}">
-              <img src="icon-person-128.png" />
+              <img src="icon-person-128-cropped.png" />
               ${items.map(function(item){
                 var area = item.area;
                 var margin = (100 - item.area)/2;

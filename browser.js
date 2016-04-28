@@ -35,6 +35,7 @@ var header = require('./elements/header')
 var search = require('./elements/search')
 var stackedBoundaries = require('./elements/stackedBoundaries')
 var download = require('./elements/download')
+var stackedMapApp = require('./elements/stackedMapApp')
 
 /*
 * action handler that modifies state based on the actions triggered
@@ -46,7 +47,7 @@ function onaction (action, state) {
   if (type === 'pathname') {
     return xtend(state, { pathname: action.pathname })
   }
-  
+
   if (type === 'download') {
     return xtend(state, { download: action.download })
   }
@@ -71,6 +72,7 @@ function onchange (action, state, oldState) {
 * Render the html of the app with yo-yo
 */
 function render (state) {
+  console.log('render')
   return app(state)
 }
 
@@ -81,9 +83,6 @@ document.body.appendChild(render(send.state()))
 */
 function app (state) {
   return el`<div id="app">
-    ${header(state, send)}
-    ${search(state, send)}
-    ${stackedBoundaries(state, send)}
-    ${download(state, send)}
+    ${stackedMapApp(state, send)}
   </div>`
 }
