@@ -4,7 +4,7 @@ var css = require('sheetify')
 module.exports = function stackedBoundaries (state, send) {  
   var prefix = css`
     :host {
-      background-color: #ffffff;
+      // background-color: #ffffff;
       margin: 0 auto;
       text-align: center;
   }
@@ -29,18 +29,27 @@ module.exports = function stackedBoundaries (state, send) {
   `
 
   function onclick(e){
-    // console.log('stacked');
-    var selectedBoundary = {name: 'nameid', show: false};
-    send('stacked', {selectedBoundary: selectedBoundary});
+    var visible;
+    if (this.dataset.stackedBoundaryVisible === 'true') {
+      visible = false;
+    } else {
+      visible = true;
+    }
+    send('stacked', {selectedBoundary: {name: this.dataset.stackedBoundary, show: visible}});
   }
 
   function buildElem(items) {
+    var largestBoundary = items[items.length-1].area;
+    var smallestBoundary = items[0].area > 10 ? items[0].area : 10;
+    var delta = (largestBoundary - smallestBoundary) / items.length;
+    var width = smallestBoundary;
+    // console.log('delta: ' + delta);
     return el`<div class="${prefix}">
               <img src="icon-person-128-cropped.png" />
               ${items.map(function(item){
-                var area = item.area;
-                var margin = (100 - item.area)/2;
-                return el`<div width='${area}' onclick=${onclick}><hr style='margin:0 ${margin}%; background: ${item.color}' /></div>`
+                width += delta;
+                var margin = (100 - width)/2;
+                return el`<div width='${width}' data-stacked-boundary='${item.name}' data-stacked-boundary-visible='${item.visible}' onclick=${onclick}><hr style='margin:0 ${margin}%; background: ${item.color}' /></div>`
               })}
               </div>`
   }

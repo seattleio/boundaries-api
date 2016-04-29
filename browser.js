@@ -10,21 +10,23 @@ L.mapbox.accessToken = 'pk.eyJ1Ijoic2V0aHZpbmNlbnQiLCJhIjoiSXZZXzZnUSJ9.Nr_zKa-4
 
 // for testing purpose
 var boundaries = [
-    {"name":"US Census Tracts", "color": "black", "area": 0, "polygon": []},
-    {"name":"City Council Districs", "color": "green", "area": 0, "polygon": []},
-    {"name":"Neighborhoods", "color": "red", "area": 0, "polygon": []},
-    {"name":"Congressional Districts", "color": "blue", "area": 0, "polygon": []},
-    {"name":"Parks", "color": "purple", "area": 0, "polygon": []},
-    {"name":"Police Department Beats", "color": "yellow", "area": 0, "polygon": []},
-    {"name":"Police Department Precints", "color": "brown", "area": 0, "polygon": []},
-    {"name":"Police Department Policing Plans", "color": "orange", "area": 0, "polygon": []},
-    {"name":"Residential Urban Villages", "color": "black", "area": 0, "polygon": []},
-    {"name":"Public Schools", "color": "black", "area": 0, "polygon": []},
-    {"name":"Zipcodes", "color": "black", "area": 0, "polygon": []},
-    {"name":"Zoning", "color": "black", "area": 0, "polygon": []}
+    {"name":"US Census Tracts", "color": "black", "area": 0, "polygon": [], visible: false},
+    {"name":"City Council Districts", "color": "green", "area": 0, "polygon": [], visible: false},
+    {"name":"Neighborhoods", "color": "red", "area": 0, "polygon": [], visible: false},
+    {"name":"Congressional Districts", "color": "blue", "area": 0, "polygon": [], visible: false},
+    {"name":"Parks", "color": "purple", "area": 0, "polygon": [], visible: false},
+    {"name":"Police Department Beats", "color": "yellow", "area": 0, "polygon": [], visible: false},
+    {"name":"Police Department Precints", "color": "brown", "area": 0, "polygon": [], visible: false},
+    {"name":"Police Department Policing Plans", "color": "orange", "area": 0, "polygon": [], visible: false},
+    {"name":"Residential Urban Villages", "color": "black", "area": 0, "polygon": [], visible: false},
+    {"name":"Public Schools", "color": "black", "area": 0, "polygon": [], visible: false},
+    {"name":"Zipcodes", "color": "black", "area": 0, "polygon": [], visible: false},
+    {"name":"Zoning", "color": "black", "area": 0, "polygon": [], visible: false}
   ];
 
-// random assign boundary area between 0 - 100
+var rainbowColors = ["red", "#d13632", "#e2571e", "#ec883a", "#e69333", "#d6a525", "#cdb924", "#96bf33", "#479e1b", "green", "#1d828e", "#503fa9", "#8a2aa7", "#a8225f", "#c83964", "#d33264", "black"];
+
+// randomly assign boundary area between 0 - 100
 boundaries.forEach(function(element, index){
     element.area = Math.random() * 100;
 });
@@ -37,6 +39,11 @@ boundaries.sort(function(a, b) {
     return -1;
   }
   return 0;
+});
+
+// assign rainbow colors, rainbowColors.length > boundaries.length
+boundaries.forEach(function(element, index){
+  element.color = rainbowColors[index];
 });
 // end for testing purpose
 
@@ -96,7 +103,13 @@ function onaction (action, state) {
   }
 
   if (type='stacked') {
-    console.log(action.selectedBoundary);
+    boundaries.forEach(function(boundary, index) {
+      if (action.selectedBoundary.name === boundary.name){
+        boundary.visible = action.selectedBoundary.show;
+        return;
+      }
+    });
+    // console.log(boundaries);
     return xtend(state, {selectedBoundary: action.selectedBoundary})
   }
 
