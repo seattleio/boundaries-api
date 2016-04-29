@@ -52,6 +52,7 @@ var send = require('send-action')({
     long: -122.332,
     selectedBoundary: {},
     boundaries: boundaries,
+    matchingBoundaries: {},
     map: undefined,
     mapLayer: L
   }

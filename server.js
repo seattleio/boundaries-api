@@ -2,6 +2,7 @@ var http = require('http')
 var corsify = require('corsify')
 var createApp = require('appa')
 var boundaries = require('seattle-boundaries')
+var data = require('seattle-boundaries/data')
 var topojson = require('topojson')
 var config = require('./config')
 
@@ -17,6 +18,13 @@ app.on('/', function (req, res, ctx) {
 app.on('/boundaries', function (req, res, ctx) {
   var query = ctx.query
   var format = query.format || 'geojson'
+
+
+
+  if (!query.long || !query.lat) {
+    var datasets = Object.keys(data)
+    return app.send(res, { datasets: datasets })
+  }
 
   var matches = boundaries({
     long: query.long || query.lng || query.lon,
