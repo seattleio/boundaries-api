@@ -103,7 +103,13 @@ function onaction (action, state) {
   }
 
   if (type='stacked') {
-    console.log(action.selectedBoundary);
+    boundaries.forEach(function(boundary, index) {
+      if (action.selectedBoundary.name === boundary.name){
+        boundary.visible = action.selectedBoundary.show;
+        return;
+      }
+    });
+    // console.log(boundaries);
     return xtend(state, {selectedBoundary: action.selectedBoundary})
   }
 

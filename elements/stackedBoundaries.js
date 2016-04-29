@@ -29,8 +29,13 @@ module.exports = function stackedBoundaries (state, send) {
   `
 
   function onclick(e){
-    var selectedBoundary = {name: 'nameid', show: false};
-    send('stacked', {selectedBoundary: selectedBoundary});
+    var visible;
+    if (this.dataset.stackedBoundaryVisible === 'true') {
+      visible = false;
+    } else {
+      visible = true;
+    }
+    send('stacked', {selectedBoundary: {name: this.dataset.stackedBoundary, show: visible}});
   }
 
   function buildElem(items) {
@@ -44,7 +49,7 @@ module.exports = function stackedBoundaries (state, send) {
               ${items.map(function(item){
                 width += delta;
                 var margin = (100 - width)/2;
-                return el`<div width='${width}' onclick=${onclick}><hr style='margin:0 ${margin}%; background: ${item.color}' /></div>`
+                return el`<div width='${width}' data-stacked-boundary='${item.name}' data-stacked-boundary-visible='${item.visible}' onclick=${onclick}><hr style='margin:0 ${margin}%; background: ${item.color}' /></div>`
               })}
               </div>`
   }
