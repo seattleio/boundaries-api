@@ -5,7 +5,6 @@ var history = require('sheet-router/history')
 var sheetRouter = require('sheet-router')
 var href = require('sheet-router/href')
 var xtend = require('xtend')
-var mapbox = require('mapbox')
 var L = require('mapbox.js')
 L.mapbox.accessToken = 'pk.eyJ1Ijoic2V0aHZpbmNlbnQiLCJhIjoiSXZZXzZnUSJ9.Nr_zKa-4Ztcmc1Ypl0k5nw'
 
