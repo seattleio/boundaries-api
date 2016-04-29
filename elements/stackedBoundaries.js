@@ -4,7 +4,7 @@ var css = require('sheetify')
 module.exports = function stackedBoundaries (state, send) {  
   var prefix = css`
     :host {
-      background-color: #ffffff;
+      // background-color: #ffffff;
       margin: 0 auto;
       text-align: center;
   }
