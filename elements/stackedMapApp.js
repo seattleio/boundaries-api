@@ -1,6 +1,7 @@
 var el = require('yo-yo')
 var css = require('sheetify')
 var header = require('../elements/header')
+var footer = require('../elements/footer')
 var search = require('../elements/search')
 var stackedBoundaries = require('../elements/stackedBoundaries')
 var map = require('./map')
@@ -8,7 +9,7 @@ var map = require('./map')
 module.exports = function stackedMapApp (state, send) {
   var stackedMap = css`
     :host {
-      background-color: #ffffff;
+      // background-color: #ffffff;
       margin: 0 auto;
       text-align: center;
   },
@@ -23,21 +24,24 @@ module.exports = function stackedMapApp (state, send) {
     width: 80%;
     margin: 0 auto;
     position: relative;
-    min-height: 300px;
+    min-height: 500px;
     // border: 1px solid gray;
   },
   div.stackedMapStacks {
     position: absolute;
     bottom: 0;
-    width: 49%;
-    float: left;
-    border:1px solid gray;
+    width: 24%;
+    float: right;
+    // border:1px solid gray;
   },
   div.stackedMapMap {
-    width: 49%;
-    float: right;
-    border: 1px solid gray;
-    min-height: 300px;
+    width: 100%;
+    float: left;
+    // border: 1px solid gray;
+    min-height: 500px;
+  }
+  div.stackedMapFooter {
+    width: 100%;
   }
   `
   function buildApp() {
@@ -45,9 +49,10 @@ module.exports = function stackedMapApp (state, send) {
       <div class="stackedMapHeader">${header(state, send)}</div>
       <div class="stackedMapSearch">${search(state, send)}</div>
       <div class="stackMapContainer">
-        <div class="stackedMapStacks"><h3>Stack</h3>${stackedBoundaries(state, send)}</div>
         <div class="stackedMapMap">${map(state, send)}</div>
+        <div class="stackedMapStacks">${stackedBoundaries(state, send)}</div>
       </div>
+      <div class='stackedMapFooter'>${footer(state, send)}</div>
     </div>`
   }
 

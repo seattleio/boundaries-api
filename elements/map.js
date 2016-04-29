@@ -5,7 +5,7 @@ module.exports = function createMap (state, send) {
   var prefix = css`
     :host {
       width: 100%;
-      min-height: 300px;
+      min-height: 500px;
     }
   `
   var mapEl;
