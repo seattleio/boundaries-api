@@ -1,6 +1,7 @@
 var el = require('yo-yo')
 var css = require('sheetify')
 var header = require('../elements/header')
+var footer = require('../elements/footer')
 var search = require('../elements/search')
 var stackedBoundaries = require('../elements/stackedBoundaries')
 var map = require('./map')
@@ -39,6 +40,9 @@ module.exports = function stackedMapApp (state, send) {
     // border: 1px solid gray;
     min-height: 500px;
   }
+  div.stackedMapFooter {
+    width: 100%;
+  }
   `
   function buildApp() {
     return el`<div id="stackedMap" class="${stackedMap}">
@@ -48,6 +52,7 @@ module.exports = function stackedMapApp (state, send) {
         <div class="stackedMapMap">${map(state, send)}</div>
         <div class="stackedMapStacks">${stackedBoundaries(state, send)}</div>
       </div>
+      <div class='stackedMapFooter'>${footer(state, send)}</div>
     </div>`
   }
 

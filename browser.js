@@ -12,7 +12,7 @@ L.mapbox.accessToken = 'pk.eyJ1Ijoic2V0aHZpbmNlbnQiLCJhIjoiSXZZXzZnUSJ9.Nr_zKa-4
 // for testing purpose
 var boundaries = [
     {"name":"US Census Tracts", "color": "black", "area": 0, "polygon": [], visible: false},
-    {"name":"City Council Districs", "color": "green", "area": 0, "polygon": [], visible: false},
+    {"name":"City Council Districts", "color": "green", "area": 0, "polygon": [], visible: false},
     {"name":"Neighborhoods", "color": "red", "area": 0, "polygon": [], visible: false},
     {"name":"Congressional Districts", "color": "blue", "area": 0, "polygon": [], visible: false},
     {"name":"Parks", "color": "purple", "area": 0, "polygon": [], visible: false},

@@ -2,7 +2,46 @@ body {
   font-family: "Source Sans Pro", Helvetica, sans-serif;
   margin: 0px;
 }
-._8e580b8f {
+._26468d63 {
+      width: 0 auto;
+      padding: 0 10px;
+      background-color: #f2f2f0;
+      margin-top: 10px;
+      height: 100px;
+      bottom: 0;
+      border-top: 2px solid #e2e2e0;
+      text-align: center;
+    }
+
+    ._26468d63 ul {
+    list-style: none;
+    // margin:0;
+    // padding:0;
+    }
+    ._26468d63 ul > li {
+        display: inline-block;
+        width: 100%;
+    }
+    ._26468d63 ul > li > ul >li {
+        color: black;
+        font-size: 0.8em;
+    }
+
+    ._26468d63 div {
+        // width: 80%;
+        // border: 1px solid black;
+        -webkit-column-count:3;
+        -moz-column-count:3;
+        -ms-column-count:3;
+        -o-column-count:3;
+        column-count:3;
+        -webkit-column-gap:5px;
+        -moz-column-gap:5px;
+        -ms-column-gap:5px;
+        -o-column-gap:5px;
+        column-gap:5px;
+        columns:3;
+    }._8e580b8f {
       width: 100%;
       background-color: #f2f2f0;
       padding: 10px 0px;
@@ -46,35 +85,38 @@ body {
     height: 15px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-  }._b3eae28a {
+  }._96ebc31d {
       // background-color: #ffffff;
       margin: 0 auto;
       text-align: center;
   }
-  ._b3eae28a div.stackedMapHeader {
+  ._96ebc31d div.stackedMapHeader {
     width: 100%;
   }
-  ._b3eae28a div.stackedMapSearch {
+  ._96ebc31d div.stackedMapSearch {
     width: 80%;
     margin: 10px auto;
   }
-  ._b3eae28a div.stackMapContainer {
+  ._96ebc31d div.stackMapContainer {
     width: 80%;
     margin: 0 auto;
     position: relative;
     min-height: 500px;
     // border: 1px solid gray;
   }
-  ._b3eae28a div.stackedMapStacks {
+  ._96ebc31d div.stackedMapStacks {
     position: absolute;
     bottom: 0;
     width: 24%;
     float: right;
     // border:1px solid gray;
   }
-  ._b3eae28a div.stackedMapMap {
+  ._96ebc31d div.stackedMapMap {
     width: 100%;
     float: left;
     // border: 1px solid gray;
     min-height: 500px;
+  }
+  ._96ebc31d div.stackedMapFooter {
+    width: 100%;
   }
