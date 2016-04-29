@@ -1,0 +1,16 @@
+{
+	"boundaries": [
+		{"name":"usCensusTracts", "color": "black", "area": 0},
+		{"name":"cityCouncilDistrics", "color": "green", "area": 0},
+		{"name":"neighborhoods", "color": "red", "area": 0},
+		{"name":"congressionalDistricts", "color": "blue", "area": 0},
+		{"name":"parks", "color": "purple", "area": 0},
+		{"name":"policeDepartmentBeats", "color": "yellow", "area": 0},
+		{"name":"policeDepartmentPrecints", "color": "brown", "area": 0},
+		{"name":"policeDepartmentPolicingPlans", "color": "orange", "area": 0},
+		{"name":"residentialUrbanVillages", "color": "black", "area": 0},
+		{"name":"publicSchools", "color": "black", "area": 0},
+		{"name":"zipcodes", "color": "black", "area": 0},
+		{"name":"zoning", "color": "black", "area": 0}
+	]
+}
