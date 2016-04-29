@@ -29,18 +29,22 @@ module.exports = function stackedBoundaries (state, send) {
   `
 
   function onclick(e){
-    // console.log('stacked');
     var selectedBoundary = {name: 'nameid', show: false};
     send('stacked', {selectedBoundary: selectedBoundary});
   }
 
   function buildElem(items) {
+    var largestBoundary = items[items.length-1].area;
+    var smallestBoundary = items[0].area > 10 ? items[0].area : 10;
+    var delta = (largestBoundary - smallestBoundary) / items.length;
+    var width = smallestBoundary;
+    // console.log('delta: ' + delta);
     return el`<div class="${prefix}">
               <img src="icon-person-128-cropped.png" />
               ${items.map(function(item){
-                var area = item.area;
-                var margin = (100 - item.area)/2;
-                return el`<div width='${area}' onclick=${onclick}><hr style='margin:0 ${margin}%; background: ${item.color}' /></div>`
+                width += delta;
+                var margin = (100 - width)/2;
+                return el`<div width='${width}' onclick=${onclick}><hr style='margin:0 ${margin}%; background: ${item.color}' /></div>`
               })}
               </div>`
   }
