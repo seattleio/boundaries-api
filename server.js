@@ -19,10 +19,8 @@ app.on('/boundaries', function (req, res, ctx) {
   var query = ctx.query
   var format = query.format || 'geojson'
 
-
-
   if (!query.long || !query.lat) {
-    var datasets = Object.keys(data)
+    var datasets = query.full ? data : Object.keys(data)
     return app.send(res, { datasets: datasets })
   }
 
