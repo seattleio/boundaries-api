@@ -25,6 +25,8 @@ var boundaries = [
     {"name":"Zoning", "color": "black", "area": 0, "polygon": [], visible: false}
   ];
 
+var rainbowColors = ["red", "#d13632", "#e2571e", "#ec883a", "#e69333", "#d6a525", "#cdb924", "#96bf33", "#479e1b", "green", "#1d828e", "#503fa9", "#8a2aa7", "#a8225f", "#c83964", "#d33264", "black"];
+
 // randomly assign boundary area between 0 - 100
 boundaries.forEach(function(element, index){
     element.area = Math.random() * 100;
@@ -38,6 +40,11 @@ boundaries.sort(function(a, b) {
     return -1;
   }
   return 0;
+});
+
+// assign rainbow colors, rainbowColors.length > boundaries.length
+boundaries.forEach(function(element, index){
+  element.color = rainbowColors[index];
 });
 // end for testing purpose
 
