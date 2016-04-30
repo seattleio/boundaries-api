@@ -33,8 +33,9 @@ api.boundaries({lat: 47.606,long:-122.332}, function (err, res, body) {
   var boundaries = JSON.parse(body).features
 
   boundaries.forEach(function(element, index){
-    console.log(Math.round(turf.area(element)) * .001)
-    element.area = Math.round(turf.area(element)) * .001
+    console.log(element.properties)
+    console.log(Math.round(turf.area(element)))
+    element.area = Math.round(turf.area(element)) / 2
     element.color = rainbowColors[index];
   })
 
@@ -49,7 +50,7 @@ api.boundaries({lat: 47.606,long:-122.332}, function (err, res, body) {
     return 0;
   });
 
-  // send('boundaries', { boundaries: boundaries })
+  send('boundaries', { boundaries: boundaries })
 })
 
 var send = require('send-action')({

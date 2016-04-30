@@ -6,7 +6,7 @@ module.exports = function (config) {
   config = config || {}
   config.url = config.url || 'http://127.0.0.1'
   config.port = config.port || '3434'
-  var host = config.url + ':' + config.port
+  var host = config.host || config.url + ':' + config.port
   var client = {}
 
   /*
@@ -63,8 +63,9 @@ api.boundaries({lat: 47.606,long:-122.332}, function (err, res, body) {
   var boundaries = JSON.parse(body).features
 
   boundaries.forEach(function(element, index){
-    console.log(Math.round(turf.area(element)) * .001)
-    element.area = Math.round(turf.area(element)) * .001
+    console.log(element.properties)
+    console.log(Math.round(turf.area(element)))
+    element.area = Math.round(turf.area(element)) / 2
     element.color = rainbowColors[index];
   })
 
@@ -79,7 +80,7 @@ api.boundaries({lat: 47.606,long:-122.332}, function (err, res, body) {
     return 0;
   });
 
-  // send('boundaries', { boundaries: boundaries })
+  send('boundaries', { boundaries: boundaries })
 })
 
 var send = require('send-action')({
@@ -365,15 +366,16 @@ module.exports = function stackedBoundaries (state, send) {
     if (!items) return el`<div></div>`
     var largestBoundary = items[items.length-1].area;
     var smallestBoundary = items[0].area > 10 ? items[0].area : 10;
-    var delta = (largestBoundary - smallestBoundary) / items.length;
-    var width = smallestBoundary;
+    var delta = 100 / items.length;
+    var width = 10;
     console.log('delta: ' + delta);
     return el`<div class="${prefix}">
               <img src="icon-person-128-cropped.png" />
               ${items.map(function(item){
+                console.log(item)
                 width += delta;
                 var margin = (100 - width)/2;
-                return el`<div width='${width}' data-stacked-boundary='${item.name}' data-stacked-boundary-visible='${item.visible}' onclick=${onclick}><hr style='margin:0 ${margin}%; background: ${item.color}' /></div>`
+                return el`<div width='${width}' data-stacked-boundary='${item.properties.dataset}' data-stacked-boundary-visible='${item.visible}' onclick=${onclick}><hr style='margin:0 ${margin}%; background: ${item.color}' /></div>`
               })}
               </div>`
   }

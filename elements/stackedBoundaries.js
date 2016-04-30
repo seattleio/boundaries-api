@@ -42,15 +42,16 @@ module.exports = function stackedBoundaries (state, send) {
     if (!items) return el`<div></div>`
     var largestBoundary = items[items.length-1].area;
     var smallestBoundary = items[0].area > 10 ? items[0].area : 10;
-    var delta = (largestBoundary - smallestBoundary) / items.length;
-    var width = smallestBoundary;
+    var delta = 100 / items.length;
+    var width = 10;
     console.log('delta: ' + delta);
     return el`<div class="${prefix}">
               <img src="icon-person-128-cropped.png" />
               ${items.map(function(item){
+                console.log(item)
                 width += delta;
                 var margin = (100 - width)/2;
-                return el`<div width='${width}' data-stacked-boundary='${item.name}' data-stacked-boundary-visible='${item.visible}' onclick=${onclick}><hr style='margin:0 ${margin}%; background: ${item.color}' /></div>`
+                return el`<div width='${width}' data-stacked-boundary='${item.properties.dataset}' data-stacked-boundary-visible='${item.visible}' onclick=${onclick}><hr style='margin:0 ${margin}%; background: ${item.color}' /></div>`
               })}
               </div>`
   }

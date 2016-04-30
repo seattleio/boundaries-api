@@ -5,7 +5,7 @@ module.exports = function (config) {
   config = config || {}
   config.url = config.url || 'http://127.0.0.1'
   config.port = config.port || '3434'
-  var host = config.url + ':' + config.port
+  var host = config.host || config.url + ':' + config.port
   var client = {}
 
   /*
