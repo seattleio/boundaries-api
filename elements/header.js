@@ -1,7 +1,7 @@
 var el = require('yo-yo')
 var css = require('sheetify')
 
-module.exports = function header (state, send) {  
+module.exports = function header (state, send) {
   var prefix = css`
     :host {
       width: 100%;
@@ -15,8 +15,13 @@ module.exports = function header (state, send) {
     h1 {
       font-size: 20px;
       line-height: 1;
-      margin: 5px 0px 0px 0px;
+      margin: 15px 0px 0px 0px;
       display: inline-block;
+    }
+
+    h1 a {
+      text-decoration: none;
+      color: #444;
     }
   `
 

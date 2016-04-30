@@ -6,6 +6,7 @@ var sheetRouter = require('sheet-router')
 var href = require('sheet-router/href')
 var xtend = require('xtend')
 var L = require('mapbox.js')
+var turf = require('turf')
 L.mapbox.accessToken = 'pk.eyJ1Ijoic2V0aHZpbmNlbnQiLCJhIjoiSXZZXzZnUSJ9.Nr_zKa-4Ztcmc1Ypl0k5nw'
 var api = require('./api-client')()
 
@@ -26,30 +27,29 @@ var boundaries = [
   ];
 
 var rainbowColors = ["red", "#d13632", "#e2571e", "#ec883a", "#e69333", "#d6a525", "#cdb924", "#96bf33", "#479e1b", "green", "#1d828e", "#503fa9", "#8a2aa7", "#a8225f", "#c83964", "#d33264", "black"];
-
-// randomly assign boundary area between 0 - 100
-boundaries.forEach(function(element, index){
-    element.area = Math.random() * 100;
-});
-// sort by area
-boundaries.sort(function(a, b) {
-  if (a.area > b.area) {
-    return 1;
-  }
-  if (a.area < b.area) {
-    return -1;
-  }
-  return 0;
-});
-
-// assign rainbow colors, rainbowColors.length > boundaries.length
-boundaries.forEach(function(element, index){
-  element.color = rainbowColors[index];
-});
 // end for testing purpose
 
 api.boundaries({lat: 47.606,long:-122.332}, function (err, res, body) {
-  send('boundaries:match', JSON.parse(body))
+  var boundaries = JSON.parse(body).features
+
+  boundaries.forEach(function(element, index){
+    console.log(Math.round(turf.area(element)) * .001)
+    element.area = Math.round(turf.area(element)) * .001
+    element.color = rainbowColors[index];
+  })
+
+  // sort by area
+  boundaries.sort(function(a, b) {
+    if (a.area > b.area) {
+      return 1;
+    }
+    if (a.area < b.area) {
+      return -1;
+    }
+    return 0;
+  });
+
+  // send('boundaries', { boundaries: boundaries })
 })
 
 var send = require('send-action')({
@@ -63,7 +63,7 @@ var send = require('send-action')({
     lat: 47.606,
     long: -122.332,
     selectedBoundary: null,
-    boundaries: boundaries,
+    boundaries: null,
     matchingBoundaries: null,
     map: undefined,
     mapLayer: L
@@ -116,6 +116,10 @@ function onaction (action, state) {
     });
     // console.log(boundaries);
     return xtend(state, {selectedBoundary: action.selectedBoundary})
+  }
+
+  if (type === 'boundaries') {
+    return xtend(state, { boundaries: action.boundaries })
   }
 
   if (type === 'boundaries:match') {

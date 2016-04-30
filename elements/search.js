@@ -10,6 +10,9 @@ module.exports = function search (state, send) {
       width: 100%;
       cursor: auto;
       text-shadow: none;
+      font-size: 20px;
+      padding: 5px;
+      border: 0px;
     }
   `
 
@@ -43,7 +46,8 @@ module.exports = function search (state, send) {
 
   return el`<nav class="${navbar}">
     <input type="search" results="5" name="searchtextfield" aria-label="Search"
-          placeholder="Search..."
+           autofocus="true"
+           placeholder="Search..."
            value="${state.address}"
            oninput=${refreshaddress}
            onsearch=${onsearch}></input>

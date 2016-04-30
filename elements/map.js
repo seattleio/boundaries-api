@@ -18,6 +18,9 @@ module.exports = function createMap (state, send) {
 
     window.addEventListener('load', function () {
       map.setView([state.lat, state.long], 11, { reset: true })
+      if (state.matchingBoundaries) {
+        state.mapLayer.geoJson(state.matchingBoundaries).addTo(state.map)
+      }
     });
     state.map = map;
   }

@@ -1,7 +1,7 @@
 var el = require('yo-yo')
 var css = require('sheetify')
 
-module.exports = function stackedBoundaries (state, send) {  
+module.exports = function stackedBoundaries (state, send) {
   var prefix = css`
     :host {
       // background-color: #ffffff;
@@ -39,11 +39,12 @@ module.exports = function stackedBoundaries (state, send) {
   }
 
   function buildElem(items) {
+    if (!items) return el`<div></div>`
     var largestBoundary = items[items.length-1].area;
     var smallestBoundary = items[0].area > 10 ? items[0].area : 10;
     var delta = (largestBoundary - smallestBoundary) / items.length;
     var width = smallestBoundary;
-    // console.log('delta: ' + delta);
+    console.log('delta: ' + delta);
     return el`<div class="${prefix}">
               <img src="icon-person-128-cropped.png" />
               ${items.map(function(item){

@@ -41,7 +41,7 @@ body {
         -o-column-gap:5px;
         column-gap:5px;
         columns:3;
-    }._8e580b8f {
+    }._505b33ec {
       width: 100%;
       background-color: #f2f2f0;
       padding: 10px 0px;
@@ -50,19 +50,27 @@ body {
       border-bottom: 1px solid #e2e2e0;
     }
 
-    ._8e580b8f h1 {
+    ._505b33ec h1 {
       font-size: 20px;
       line-height: 1;
-      margin: 5px 0px 0px 0px;
+      margin: 15px 0px 0px 0px;
       display: inline-block;
+    }
+
+    ._505b33ec h1 a {
+      text-decoration: none;
+      color: #444;
     }._7b4f2972 {
       width: 100%;
       min-height: 500px;
-    }._db1a5204 input[type=search] {
+    }._1a3cfdf3 input[type=search] {
       text-align: center;
       width: 100%;
       cursor: auto;
       text-shadow: none;
+      font-size: 20px;
+      padding: 5px;
+      border: 0px;
     }._c86e8af3 {
       // background-color: #ffffff;
       margin: 0 auto;
