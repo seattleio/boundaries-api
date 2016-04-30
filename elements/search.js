@@ -1,8 +1,9 @@
 var el = require('yo-yo')
 var css = require('sheetify')
 var mapbox = require('mapbox')
+var api = require('../api-client')()
 
-module.exports = function search (state, send) {  
+module.exports = function search (state, send) {
   var navbar = css`
     input[type=search] {
       text-align: center;
@@ -23,7 +24,11 @@ module.exports = function search (state, send) {
       var longitude = data.latlng[1];
       console.log('resp-lat: ' + latitude);
       console.log('resp-lng: ' + longitude);
-      send('search', { address: addrpattern, lat: latitude, long: longitude });
+      api.boundaries({ lat: latitude, long: longitude }, function (err, res, body) {
+        console.log('happening')
+        send('search', { address: addrpattern, lat: latitude, long: longitude });
+        send('boundaries:match', { matchingBoundaries: JSON.parse(body) })
+      })
     }
   }
 
@@ -38,6 +43,7 @@ module.exports = function search (state, send) {
 
   return el`<nav class="${navbar}">
     <input type="search" results="5" name="searchtextfield" aria-label="Search"
+          placeholder="Search..."
            value="${state.address}"
            oninput=${refreshaddress}
            onsearch=${onsearch}></input>

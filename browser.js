@@ -7,6 +7,7 @@ var href = require('sheet-router/href')
 var xtend = require('xtend')
 var L = require('mapbox.js')
 L.mapbox.accessToken = 'pk.eyJ1Ijoic2V0aHZpbmNlbnQiLCJhIjoiSXZZXzZnUSJ9.Nr_zKa-4Ztcmc1Ypl0k5nw'
+var api = require('./api-client')()
 
 // for testing purpose
 var boundaries = [
@@ -47,19 +48,23 @@ boundaries.forEach(function(element, index){
 });
 // end for testing purpose
 
+api.boundaries({lat: 47.606,long:-122.332}, function (err, res, body) {
+  send('boundaries:match', JSON.parse(body))
+})
+
 var send = require('send-action')({
   onaction: onaction,
   onchange: onchange,
   state: {
     title: 'Seattle Boundaries',
     pathname: document.location.pathname,
-    address: 'Search...',
+    address: '',
     download: false,
     lat: 47.606,
     long: -122.332,
-    selectedBoundary: {},
+    selectedBoundary: null,
     boundaries: boundaries,
-    matchingBoundaries: {},
+    matchingBoundaries: null,
     map: undefined,
     mapLayer: L
   }
@@ -102,7 +107,7 @@ function onaction (action, state) {
     return xtend(state, { address: action.address, lat: action.lat, long: action.long })
   }
 
-  if (type='stacked') {
+  if (type === 'stacked') {
     boundaries.forEach(function(boundary, index) {
       if (action.selectedBoundary.name === boundary.name){
         boundary.visible = action.selectedBoundary.show;
@@ -111,6 +116,10 @@ function onaction (action, state) {
     });
     // console.log(boundaries);
     return xtend(state, {selectedBoundary: action.selectedBoundary})
+  }
+
+  if (type === 'boundaries:match') {
+    return xtend(state, { matchingBoundaries: action.matchingBoundaries })
   }
 
   return state
