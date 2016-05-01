@@ -38,7 +38,8 @@
     "turf": "^2.0.2",
     "xhr": "^2.2.0",
     "xtend": "^4.0.1",
-    "yo-yo": "^1.1.1"
+    "yo-yo": "^1.1.1",
+    "qs": "^6.1.0"
   },
   "devDependencies": {
     "browserify": "^13.0.0",
