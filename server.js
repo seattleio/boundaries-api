@@ -7,7 +7,9 @@ var topojson = require('topojson')
 var config = require('./config')
 
 var app = createApp()
-var host = config.url + ':' + config.port
+var host = process.env.NODE_ENV === 'development' ?
+  config.url + ':' + config.port :
+  config.url
 
 var cors = corsify({
   'Access-Control-Allow-Origin': '*',
