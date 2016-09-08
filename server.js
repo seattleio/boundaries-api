@@ -8,7 +8,12 @@ var config = require('./config')
 
 var app = createApp()
 var host = config.url + ':' + config.port
-var cors = corsify({ 'Access-Control-Allow-Methods': 'GET' })
+
+var cors = corsify({
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET'
+})
+
 http.createServer(cors(app)).listen(config.port)
 
 app.on('/', function (req, res, ctx) {
