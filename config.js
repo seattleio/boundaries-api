@@ -4,7 +4,7 @@ var config = {
     port: 3434
   },
   production: {
-    url: 'http://boundaries.seattle.io',
+    url: 'http://boundaries-api.seattle.io',
     port: process.env.PORT
   }
 }
